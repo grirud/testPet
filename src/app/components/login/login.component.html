@@ -1,0 +1,10 @@
+<p>login works!</p>
+
+<div class="wrapper">
+    <input type="text" class="input"  [(ngModel)]="searchTerm" />
+    <div class="content-list" *ngIf="values.length" (click)="handleOptionClick($event)">
+        <ng-container *ngFor="let value of values">
+            <div class="list is-hovered">{{ value }}</div>
+        </ng-container>
+    </div>
+</div>
