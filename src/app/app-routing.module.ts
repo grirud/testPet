@@ -4,7 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PublicComponent } from './components/public/public.component';
-import { RouteGuardGuard } from './guards/route-guard.guard';
+import { RouteGuard } from './guards/route-guard.guard';
 
 const routes: Routes = [
   {
@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [RouteGuardGuard]
+    canActivate: [RouteGuard]
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [RouteGuardGuard]
+    canActivate: [RouteGuard]
   },
   {
     path: '404',

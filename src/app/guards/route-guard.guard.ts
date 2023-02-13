@@ -1,15 +1,26 @@
-import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RouteGuardGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  
+export class RouteGuard implements CanActivate {
+    private _token: string | null
+    
+    constructor(
+        private _router: Router
+    ) { this._token = localStorage.getItem('token') }
+    
+    canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+
+        if(!this._token && state.url === '/dashboard') {
+            this._router.navigate(['/login'])
+        }
+
+        if(this._token && state.url === '/login') {
+            this._router.navigate(['/dashboard'])
+        }
+
+        return true
+    }
 }

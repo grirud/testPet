@@ -1,0 +1,10 @@
+<p>layout works!</p>
+<span (click)="navigate('/404')">404</span> <br/>
+<span (click)="navigate('/')">/</span> <br/>
+<span (click)="navigate('/other')">other</span> <br/>
+<span (click)="navigate('/login')">login</span> <br/>
+<span (click)="navigate('/dashboard')">dashboard</span> <br/>
+<span (click)="navigate('/public')">public</span> <br/>
+<span (click)="getUsers(['iliakan', 'remy', 'no.such.users'])">click me</span>
+
+<router-outlet></router-outlet>
