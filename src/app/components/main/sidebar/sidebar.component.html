@@ -1,1 +1,11 @@
-<p>sidebar works!</p>
+
+<div class="sidebar">
+    <ng-container *ngFor="let item of menuItems">
+        <div
+            [routerLinkActive]="'active-nav'"
+            [routerLink]="item.link"
+            [routerLinkActiveOptions]="{ exact: true }">
+            {{ item.title }}
+        </div>
+    </ng-container>
+</div>

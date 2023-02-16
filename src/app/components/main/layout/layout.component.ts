@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,27 +7,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-  constructor( private _router: Router ) {}
+  public isOpenSidebar: boolean = false;
+  private _router = inject(Router)
+
   navigate(path: string): void {
     this._router.navigate([path])
   }
 
-async getUsers(users: string[]) {
-  const result = await Promise.all(users.map((user) => fetch(`https://api.github.com/users/${user}`).then(
-    successResponse => {
-      if (successResponse.status != 200) {
-        return null;
-      } else {
-        return successResponse.json();
-      }
-    },
-    failResponse => {
-      return null;
-      })
-    )
-  )
-  
-  console.log('result', result)
-}
+  changeSidebarState(): void {
+    this.isOpenSidebar = !this.isOpenSidebar
+    console.log('alkfjjkshgjsd;gh;sdjgkl')
+  }
 
+  async getUsers(users: string[]) {
+    const result = await Promise.all(users.map((user) => fetch(`https://api.github.com/users/${user}`).then(
+      successResponse => {
+        if (successResponse.status != 200) {
+          return null;
+        } else {
+          return successResponse.json();
+        }
+      },
+      failResponse => {
+        return null;
+        })
+      )
+    )
+    console.log('result', result)
+  }
 }

@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutComponent } from './components/main/layout/layout.component';
 import { HeaderComponent } from './components/main/header/header.component';
 import { SidebarComponent } from './components/main/sidebar/sidebar.component';
+import { FeatureToggleDirective } from './directives/feature-toggle.directive';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SidebarComponent } from './components/main/sidebar/sidebar.component';
     LayoutComponent,
     HeaderComponent,
     SidebarComponent,
+    FeatureToggleDirective,
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,26 @@
+.sidebar {
+    position: absolute;
+    background-image: url('../../../../assets/castle.jpg');
+    z-index: 9999;
+    // background: black;
+    width: 130px;
+    height: 100%;
+    transition: margin-left 2s ease-out;
+    & div {
+        box-sizing: content-box;
+        border: 1px solid yellow;
+        color: white;
+        padding: 10px;
+        margin: 10px 5px;
+        border-radius: 100%;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+            background: linear-gradient(to right, blue, pink);
+        }
+    }
+}
+
+.active-nav {
+    background: orange;
+}

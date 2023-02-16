@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, debounceTime, Observable, of, Subject, switchMap, takeUntil, throwError } from 'rxjs';
 
@@ -93,8 +93,9 @@ export class LoginComponent implements OnInit{
         this.test.next(value)
     }
     private _destroyed$ = new Subject<void>();
+    private _http = inject(HttpClient)
 
-    constructor( private _http: HttpClient ){}
+    // constructor( private _http: HttpClient ){}
 
     ngOnInit(): void {
         this.test.pipe(
@@ -107,10 +108,10 @@ export class LoginComponent implements OnInit{
             takeUntil(this._destroyed$)
             ).subscribe(
                 (res: string[]) => {
-                    setTimeout(() => {
+                    // setTimeout(() => {
                         this.loaded = false
                         this.values = res
-                    }, 2000);
+                    // }, 2000);
                 }
             )
         }
@@ -124,6 +125,9 @@ export class LoginComponent implements OnInit{
         this._destroyed$.complete()
     }
 
+    rerere() {
+        this._http.get('http://localhost:3000/users?name=John').subscribe((res) => console.log('res',res))
+    }
     private _falseRequest(term: string): Observable<any> {
         this.loaded = true
         if(!term) {
@@ -139,8 +143,10 @@ export class LoginComponent implements OnInit{
             'building sentences',
             'required options'
         ]
+        // this._http.get('http://localhost:3000/mocked', {params: { term }})
+
        const test = this._http.get('test') 
        const result: string[] = value.filter((value) => value.includes(term.toString()))
-       return term === 'test' ? test : of(result)
+       return this._http.get('http://localhost:3000/mocked', { params: { term } })
     }
 }
