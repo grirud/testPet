@@ -26,13 +26,8 @@ import { FeatureToggleDirective } from './directives/feature-toggle.directive';
     SidebarComponent,
     FeatureToggleDirective,
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [HttpClientModule, BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

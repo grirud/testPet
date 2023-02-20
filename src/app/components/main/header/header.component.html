@@ -1,16 +1,23 @@
 <header>
   <div class="left-container">
     <div id="menu_button">
-      <input type="checkbox" id="menu_checkbox" (click)="openSideMenu()">
+      <input type="checkbox" id="menu_checkbox" (click)="openSideMenu()" />
       <label for="menu_checkbox" class="menu_label">
-        <div class="menu_text_bar" [style.color]="isOpen ? 'white' : 'red'"></div>
+        <div
+          class="menu_text_bar"
+          [style.color]="isOpen ? 'white' : 'red'"
+        ></div>
       </label>
     </div>
   </div>
 
-
-    <label  *featureToggle="'theme'" class="switch">
-        <input #check id="checkboxclick" type="checkbox" (click)="toggleTheme(check.checked)" />
-        <span class="slider round"></span>
-      </label>
+  <label *featureToggle="'theme'" class="switch">
+    <input
+      #check
+      id="checkboxclick"
+      type="checkbox"
+      (click)="toggleTheme(check.checked)"
+    />
+    <span class="slider round"></span>
+  </label>
 </header>

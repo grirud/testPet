@@ -1,22 +1,13 @@
 <div class="app-layout-container">
-    <app-header (isOpenSidebarOutput)="changeSidebarState()"></app-header>
-  
-    <div class="app-layout-body">
-      <div class="sidebar-backdrop" *ngIf="!isOpenSidebar"></div>
-      <app-sidebar [ngClass]="!isOpenSidebar ? '' : 'hidden-sidebar'"></app-sidebar>
-      <div class="app-layout-content">
-        <router-outlet></router-outlet>
-      </div>
+  <app-header (isOpenSidebarOutput)="changeSidebarState()"></app-header>
+
+  <div class="app-layout-body">
+    <div class="sidebar-backdrop" *ngIf="!isOpenSidebar"></div>
+    <app-sidebar
+      [ngClass]="!isOpenSidebar ? '' : 'hidden-sidebar'"
+    ></app-sidebar>
+    <div class="app-layout-content">
+      <router-outlet></router-outlet>
     </div>
+  </div>
 </div>
-  
-
-
-<!-- <p>layout works!</p>
-<span (click)="navigate('/404')">404</span> <br/>
-<span (click)="navigate('/')">/</span> <br/>
-<span (click)="navigate('/other')">other</span> <br/>
-<span (click)="navigate('/login')">login</span> <br/>
-<span (click)="navigate('/dashboard')">dashboard</span> <br/>
-<span (click)="navigate('/public')">public</span> <br/>
-<span (click)="getUsers(['iliakan', 'remy', 'no.such.users'])">click me</span> -->

@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/public'
+    redirectTo: '/public',
   },
   {
     path: 'public',
@@ -19,12 +19,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [RouteGuard]
+    canActivate: [RouteGuard],
   },
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [RouteGuard]
+    canActivate: [RouteGuard],
   },
   {
     path: '404',
@@ -38,6 +38,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

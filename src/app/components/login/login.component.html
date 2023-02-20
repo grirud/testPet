@@ -1,15 +1,19 @@
-<p (click)="rerere()" *featureToggle="'theme'">login works!</p>
+<p (click)="getUsers()" *featureToggle="'theme'">login works!</p>
 <div *featureToggle="'theme'">asdasdsadasdasd</div>
 <div class="wrapper">
-    <div class="input-container">
-        <input type="text" class="input"  [(ngModel)]="searchTerm" />
-        <div *ngIf="loaded" class="spinner-container">
-            <div class="spinner"></div>
-        </div>
+  <div class="input-container">
+    <input type="text" class="input" [(ngModel)]="searchTerm" />
+    <div *ngIf="loaded" class="spinner-container">
+      <div class="spinner"></div>
     </div>
-    <div class="content-list" *ngIf="values.length" (click)="handleOptionClick($event)">
-        <ng-container *ngFor="let value of values">
-            <div class="list is-hovered">{{ value }}</div>
-        </ng-container>
-    </div>
+  </div>
+  <div
+    class="content-list"
+    *ngIf="values.length"
+    (click)="handleOptionClick($event)"
+  >
+    <ng-container *ngFor="let value of values">
+      <div class="list is-hovered">{{ value }}</div>
+    </ng-container>
+  </div>
 </div>
