@@ -30,40 +30,29 @@ export class FeatureToggleDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this._shouldRender();
-    }, 0);
-    // this._shouldRender();
+    this._shouldRender();
   }
 
   private _shouldRender() {
-    const features = this._featuresService.features.value;
+    this._featureSub = this._featuresService.features.subscribe(
+      (features: Record<string, boolean>) => {
+        console.log(
+          'features',
+          features,
+          this.featureToggle,
+          features[this.featureToggle]
+        );
 
-    if (features[this.featureToggle]) {
-      this._viewContainer.createEmbeddedView(this._templateRef);
-    } else {
-      this._viewContainer.clear();
-    }
-    // this._featureSub = this._featuresService.features.subscribe(
-    //   (features: Record<string, boolean>) => {
-    //     console.log(
-    //       'features',
-    //       features,
-    //       this.featureToggle,
-    //       features[this.featureToggle]
-    //     );
-
-    //     if (features[this.featureToggle]) {
-    //       this._viewContainer.createEmbeddedView(this._templateRef);
-    //     } else {
-    //       this._viewContainer.clear();
-    //     }
-    //   }
-    // );
+        if (features[this.featureToggle]) {
+          this._viewContainer.createEmbeddedView(this._templateRef);
+        } else {
+          this._viewContainer.clear();
+        }
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this._featureSub?.unsubscribe();
-    console.log('this._featureSub', this._featureSub);
   }
 }
