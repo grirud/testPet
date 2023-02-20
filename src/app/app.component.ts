@@ -14,8 +14,11 @@ export class AppComponent {
   constructor() {
     this._httpClient
       .get('http://localhost:3000/features')
-      .subscribe((features) =>
-        this._featuresService.features.next(features as Record<string, boolean>)
-      );
+      .subscribe((features) => {
+        console.log('first', features);
+        this._featuresService.features.next(
+          features as Record<string, boolean>
+        );
+      });
   }
 }

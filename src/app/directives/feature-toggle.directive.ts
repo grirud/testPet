@@ -16,6 +16,9 @@ import { Subscription } from 'rxjs';
 export class FeatureToggleDirective implements OnInit, OnDestroy {
   @Input() featureToggle: string = '';
   @Input() test: any;
+  get test3(): any {
+    return this._featuresService.features.getValue();
+  }
 
   private _featuresService = inject(FeaturesService);
 
@@ -27,19 +30,36 @@ export class FeatureToggleDirective implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this._shouldRender();
+    setTimeout(() => {
+      this._shouldRender();
+    }, 0);
+    // this._shouldRender();
   }
 
   private _shouldRender() {
-    this._featureSub = this._featuresService.features.subscribe(
-      (features: Record<string, boolean>) => {
-        if (features[this.featureToggle]) {
-          this._viewContainer.createEmbeddedView(this._templateRef);
-        } else {
-          this._viewContainer.clear();
-        }
-      }
-    );
+    const features = this._featuresService.features.value;
+
+    if (features[this.featureToggle]) {
+      this._viewContainer.createEmbeddedView(this._templateRef);
+    } else {
+      this._viewContainer.clear();
+    }
+    // this._featureSub = this._featuresService.features.subscribe(
+    //   (features: Record<string, boolean>) => {
+    //     console.log(
+    //       'features',
+    //       features,
+    //       this.featureToggle,
+    //       features[this.featureToggle]
+    //     );
+
+    //     if (features[this.featureToggle]) {
+    //       this._viewContainer.createEmbeddedView(this._templateRef);
+    //     } else {
+    //       this._viewContainer.clear();
+    //     }
+    //   }
+    // );
   }
 
   ngOnDestroy(): void {

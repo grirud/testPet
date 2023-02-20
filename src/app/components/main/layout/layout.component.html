@@ -2,9 +2,9 @@
   <app-header (isOpenSidebarOutput)="changeSidebarState()"></app-header>
 
   <div class="app-layout-body">
-    <div class="sidebar-backdrop" *ngIf="!isOpenSidebar"></div>
+    <div class="sidebar-backdrop" *ngIf="isOpenSidebar"></div>
     <app-sidebar
-      [ngClass]="!isOpenSidebar ? '' : 'hidden-sidebar'"
+      [ngClass]="isOpenSidebar ? '' : 'hidden-sidebar'"
     ></app-sidebar>
     <div class="app-layout-content">
       <router-outlet></router-outlet>

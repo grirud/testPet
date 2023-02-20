@@ -43,10 +43,10 @@ export class LoginComponent implements OnInit {
         takeUntil(this._destroyed$)
       )
       .subscribe((res: string[]) => {
-        // setTimeout(() => {
-        this.loaded = false;
-        this.values = res;
-        // }, 2000);
+        setTimeout(() => {
+          this.loaded = false;
+          this.values = res;
+        }, 2000);
       });
   }
 
