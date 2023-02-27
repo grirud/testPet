@@ -26,8 +26,6 @@ export class LoginComponent implements OnInit {
   private _destroyed$ = new Subject<void>();
   private _http = inject(HttpClient);
 
-  // constructor( private _http: HttpClient ){}
-
   ngOnInit(): void {
     this.test
       .pipe(
@@ -80,7 +78,6 @@ export class LoginComponent implements OnInit {
       'building sentences',
       'required options',
     ];
-    // this._http.get('http://localhost:3000/mocked', {params: { term }})
 
     const test = this._http.get('test');
     const result: string[] = value.filter((value) =>

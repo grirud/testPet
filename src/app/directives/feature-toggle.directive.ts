@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs';
 })
 export class FeatureToggleDirective implements OnInit, OnDestroy {
   @Input() featureToggle: string = '';
-  @Input() test: any;
   get test3(): any {
     return this._featuresService.features.getValue();
   }

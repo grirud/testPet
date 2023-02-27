@@ -15,7 +15,6 @@ export class AppComponent {
     this._httpClient
       .get('http://localhost:3000/features')
       .subscribe((features) => {
-        console.log('first', features);
         this._featuresService.features.next(
           features as Record<string, boolean>
         );
