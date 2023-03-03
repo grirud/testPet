@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-layout',
@@ -8,16 +7,6 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
   public isOpenSidebar: boolean = false;
-  private _router = inject(Router);
-
-  navigate(path: string): void {
-    this._router.navigate([path]);
-  }
-
-  changeSidebarState(): void {
-    this.isOpenSidebar = !this.isOpenSidebar;
-    console.log('alkfjjkshgjsd;gh;sdjgkl');
-  }
 
   async getUsers(users: string[]) {
     const result = await Promise.all(

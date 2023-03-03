@@ -1,10 +1,13 @@
 <div class="app-layout-container">
-  <app-header (isOpenSidebarOutput)="changeSidebarState()"></app-header>
+  <!-- <span (click)="getUsers(['ererer', 'rrrrrr'])">asfasfsfafa</span> -->
+  <app-header
+    (isOpenSidebarOutput)="isOpenSidebar = !isOpenSidebar"
+  ></app-header>
 
   <div class="app-layout-body">
-    <div class="sidebar-backdrop" *ngIf="isOpenSidebar"></div>
     <app-sidebar
       [ngClass]="isOpenSidebar ? '' : 'hidden-sidebar'"
+      (closeSidebar)="isOpenSidebar = !isOpenSidebar"
     ></app-sidebar>
     <div class="app-layout-content">
       <router-outlet></router-outlet>

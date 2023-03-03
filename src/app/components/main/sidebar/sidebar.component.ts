@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MENU_ITEMS } from './sidebar-routes';
 
 @Component({
@@ -7,5 +7,7 @@ import { MENU_ITEMS } from './sidebar-routes';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
+  @Output() closeSidebar = new EventEmitter<void>();
+
   public menuItems = MENU_ITEMS;
 }

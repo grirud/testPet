@@ -15,9 +15,6 @@ import { Subscription } from 'rxjs';
 })
 export class FeatureToggleDirective implements OnInit, OnDestroy {
   @Input() featureToggle: string = '';
-  get test3(): any {
-    return this._featuresService.features.getValue();
-  }
 
   private _featuresService = inject(FeaturesService);
 
@@ -35,13 +32,6 @@ export class FeatureToggleDirective implements OnInit, OnDestroy {
   private _shouldRender() {
     this._featureSub = this._featuresService.features.subscribe(
       (features: Record<string, boolean>) => {
-        console.log(
-          'features',
-          features,
-          this.featureToggle,
-          features[this.featureToggle]
-        );
-
         if (features[this.featureToggle]) {
           this._viewContainer.createEmbeddedView(this._templateRef);
         } else {
